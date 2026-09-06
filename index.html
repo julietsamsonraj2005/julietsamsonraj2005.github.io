@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juliet Samson Raj S — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1220;
+    --panel: #111A2E;
+    --panel-2: #0E1626;
+    --text: #E7ECF3;
+    --text-soft: #8D96AC;
+    --accent: #7C9CFF;
+    --accent-2: #F2A65A;
+    --line: #223055;
+    --max: 760px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(124,156,255,0.10) 1px, transparent 0);
+    background-size: 28px 28px;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+
+  a{ color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover{ color: var(--accent-2); }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  /* scroll progress — a nod to a training run */
+  .progress-track{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    z-index: 60;
+  }
+  .progress-fill{
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+
+  header.site{
+    position: sticky;
+    top: 3px;
+    background: rgba(11,18,32,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 50;
+  }
+  .navbar{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .navbar .mark{ font-weight: 600; font-size: 1rem; }
+  .navlinks{
+    display: flex;
+    gap: 20px;
+    font-size: 0.82rem;
+    flex-wrap: wrap;
+  }
+  .navlinks a{
+    color: var(--text-soft);
+    text-decoration: none;
+  }
+  .navlinks a.active, .navlinks a:hover{ color: var(--accent); }
+
+  /* hero */
+  .hero{
+    position: relative;
+    padding: 96px 0 88px;
+    overflow: hidden;
+  }
+  .hero-net{
+    position: absolute;
+    top: -60px;
+    right: -120px;
+    width: 620px;
+    max-width: 90vw;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .hero-net circle{ fill: var(--accent); }
+  .hero-net line{ stroke: var(--line); stroke-width: 1; }
+  .hero-net circle.pulse{
+    animation: pulseNode 3.2s ease-in-out infinite;
+  }
+  @keyframes pulseNode{
+    0%, 100%{ opacity: 0.35; r: 3.5; }
+    50%{ opacity: 1; r: 5; }
+  }
+
+  .hero .tag{
+    font-size: 0.82rem;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+  .hero h1{
+    font-weight: 600;
+    font-size: clamp(2rem, 5.4vw, 3rem);
+    line-height: 1.18;
+    margin: 0 0 22px;
+    max-width: 16ch;
+    position: relative;
+    z-index: 2;
+  }
+  .hero p.lede{
+    max-width: 52ch;
+    color: var(--text-soft);
+    font-size: 1.02rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero .links{
+    margin-top: 30px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero .links a{ text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+  .hero .links a:hover{ border-color: var(--accent-2); }
+
+  /* sections */
+  section{
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  section .path{
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin: 0 0 20px;
+    padding: 3px 10px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--panel);
+  }
+  section h2{
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 22px;
+  }
+  section > p{
+    max-width: 60ch;
+    color: var(--text-soft);
+  }
+
+  /* skills */
+  .skill-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 700px){
+    .skill-grid{ grid-template-columns: 1fr; }
+  }
+  .skill-card{
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 6px;
+    padding: 18px 18px 20px;
+  }
+  .skill-card h3{
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .chip-row{ display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 5px 10px;
+    background: var(--panel-2);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .chip:hover{ border-color: var(--accent); color: var(--accent); }
+
+  /* projects */
+  .project{
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 8px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .project:last-child{ margin-bottom: 0; }
+  .project-head{
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .project-head .crumb{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+  }
+  .project-body{ padding: 24px 20px 28px; }
+  .project h3{
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 0 0 10px;
+  }
+  .project .desc{
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    max-width: 58ch;
+    margin: 0 0 22px;
+  }
+  .tech-row{ display:flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .tech-row span{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent-2);
+    border: 1px solid var(--line);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  /* layered architecture with data-flow pulse */
+  .arch{
+    display: flex;
+    gap: 20px;
+  }
+  .arch-rail{
+    position: relative;
+    width: 14px;
+    flex: none;
+  }
+  .arch-rail .line{
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: var(--line);
+  }
+  .arch-rail .dot{
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 2px;
+    height: 2px;
+  }
+  .arch-rail .pulse{
+    position: absolute;
+    left: 2px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px 2px rgba(124,156,255,0.6);
+    top: 0;
+    opacity: 0;
+  }
+  .arch.visible .arch-rail .pulse{
+    animation: flowDown 2.6s ease-in-out infinite;
+  }
+  @keyframes flowDown{
+    0%{ top: 0%; opacity: 0; }
+    8%{ opacity: 1; }
+    92%{ opacity: 1; }
+    100%{ top: calc(100% - 10px); opacity: 0; }
+  }
+  .arch-layers{ flex: 1; display: flex; flex-direction: column; gap: 22px; }
+  .arch-layer .name{ font-size: 0.88rem; font-weight: 500; margin-bottom: 3px; }
+  .arch-layer .detail{ font-size: 0.82rem; color: var(--text-soft); }
+
+  /* timeline */
+  .timeline{ position: relative; padding-left: 26px; }
+  .timeline::before{
+    content: "";
+    position: absolute;
+    left: 5px; top: 4px; bottom: 4px;
+    width: 2px;
+    background: var(--line);
+  }
+  .tl-item{ position: relative; padding-bottom: 30px; }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-item::before{
+    content: "";
+    position: absolute;
+    left: -26px; top: 4px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .tl-item .when{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent-2);
+    margin-bottom: 4px;
+  }
+  .tl-item .degree{ font-weight: 500; font-size: 0.98rem; }
+  .tl-item .place{ color: var(--text-soft); font-size: 0.88rem; }
+
+  /* contact */
+  .contact-block{
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 8px;
+    padding: 22px 24px;
+  }
+  .contact-row{
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+    flex-wrap: wrap;
+  }
+  .contact-row:last-child{ border-bottom: none; }
+  .contact-row .cmd{
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    width: 130px;
+    flex: none;
+  }
+  .contact-row .cmd::before{ content: "$ "; color: var(--accent); }
+
+  footer{
+    padding: 40px 0 60px;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<header class="site">
+  <div class="navbar">
+    <span class="mark">Juliet Samson Raj S</span>
+    <nav class="navlinks" id="navlinks">
+      <a href="#about" data-nav>about</a>
+      <a href="#skills" data-nav>skills</a>
+      <a href="#work" data-nav>work</a>
+      <a href="#education" data-nav>education</a>
+      <a href="#contact" data-nav>contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <svg class="hero-net" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- edges -->
+      <line x1="60" y1="80" x2="260" y2="60"></line>
+      <line x1="60" y1="180" x2="260" y2="60"></line>
+      <line x1="60" y1="180" x2="260" y2="180"></line>
+      <line x1="60" y1="280" x2="260" y2="180"></line>
+      <line x1="60" y1="280" x2="260" y2="300"></line>
+      <line x1="60" y1="380" x2="260" y2="300"></line>
+      <line x1="60" y1="380" x2="260" y2="420"></line>
+      <line x1="260" y1="60" x2="460" y2="140"></line>
+      <line x1="260" y1="180" x2="460" y2="140"></line>
+      <line x1="260" y1="180" x2="460" y2="260"></line>
+      <line x1="260" y1="300" x2="460" y2="260"></line>
+      <line x1="260" y1="300" x2="460" y2="360"></line>
+      <line x1="260" y1="420" x2="460" y2="360"></line>
+      <!-- nodes: input -->
+      <circle class="pulse" cx="60" cy="80" r="4" style="animation-delay:0s"></circle>
+      <circle class="pulse" cx="60" cy="180" r="4" style="animation-delay:0.4s"></circle>
+      <circle class="pulse" cx="60" cy="280" r="4" style="animation-delay:0.8s"></circle>
+      <circle class="pulse" cx="60" cy="380" r="4" style="animation-delay:1.2s"></circle>
+      <!-- nodes: hidden -->
+      <circle class="pulse" cx="260" cy="60" r="4" style="animation-delay:0.2s"></circle>
+      <circle class="pulse" cx="260" cy="180" r="4" style="animation-delay:0.6s"></circle>
+      <circle class="pulse" cx="260" cy="300" r="4" style="animation-delay:1.0s"></circle>
+      <circle class="pulse" cx="260" cy="420" r="4" style="animation-delay:1.4s"></circle>
+      <!-- nodes: output -->
+      <circle class="pulse" cx="460" cy="140" r="4" style="animation-delay:0.5s"></circle>
+      <circle class="pulse" cx="460" cy="260" r="4" style="animation-delay:0.9s"></circle>
+      <circle class="pulse" cx="460" cy="360" r="4" style="animation-delay:1.3s"></circle>
+    </svg>
+
+    <p class="tag mono">ai / ml engineer — thiruchirapalli, india</p>
+    <h1>I turn data into systems that actually run, not just notebooks.</h1>
+    <p class="lede">M.Sc. Artificial Intelligence student with a foundation in Python, C++, and full-stack development. I build the whole path — from a model that predicts something useful, to the API and interface that put it in front of a person.</p>
+    <div class="links">
+      <a href="#work">View work</a>
+      <a href="https://github.com/julietsamsonraj2005" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/juliet-samson-raj-12a8b2315" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:julietsamsonraj2005@gmail.com">Email me</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <span class="path mono">~/about</span>
+    <h2>A bit about me</h2>
+    <p>I'm currently pursuing my M.Sc. in Artificial Intelligence at St. Joseph's College (Autonomous), Thiruchirapalli, after finishing a B.Sc. in Computer Science. My recent work includes an AI-based health risk prediction system and a full-stack fitness management platform — both built end to end, model to interface.</p>
+    <p>I'm a quick learner who enjoys the problem-solving side of engineering as much as the building side, and I work well in teams that move fast.</p>
+  </section>
+
+  <section id="skills">
+    <span class="path mono">~/skills</span>
+    <h2>What I work with</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>languages &amp; ml</h3>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">C++</span><span class="chip">Machine Learning</span>
+          <span class="chip">Scikit-learn</span><span class="chip">Random Forest</span>
+          <span class="chip">TensorFlow</span><span class="chip">PyTorch</span>
+          <span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>systems &amp; tools</h3>
+        <div class="chip-row">
+          <span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">REST APIs</span>
+          <span class="chip">FastAPI</span><span class="chip">Flask</span>
+          <span class="chip">Git / GitHub</span><span class="chip">Visual Studio</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>working style</h3>
+        <div class="chip-row">
+          <span class="chip">Project management</span><span class="chip">Teamwork</span>
+          <span class="chip">Communication</span><span class="chip">Adaptability</span>
+          <span class="chip">Planning &amp; organization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <span class="path mono">~/work</span>
+    <h2>Selected projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="crumb">~/work/health-ai</span>
+      </div>
+      <div class="project-body">
+        <h3>HealthAI</h3>
+        <p class="desc">An AI healthcare application that predicts health risks using a Random Forest model, architected as four distinct layers with secure REST APIs tying them together.</p>
+        <div class="tech-row">
+          <span>React</span><span>FastAPI / Flask</span><span>Scikit-learn</span><span>MongoDB</span>
+        </div>
+        <div class="arch">
+          <div class="arch-rail"><div class="line"></div><div class="pulse"></div></div>
+          <div class="arch-layers">
+            <div class="arch-layer"><div class="name">Presentation</div><div class="detail">React interface for entering health data and viewing risk results</div></div>
+            <div class="arch-layer"><div class="name">Application</div><div class="detail">Secure REST APIs connecting frontend, model, and database</div></div>
+            <div class="arch-layer"><div class="name">Predictive analytics</div><div class="detail">Random Forest model producing the health risk prediction</div></div>
+            <div class="arch-layer"><div class="name">Data persistence</div><div class="detail">MongoDB storing user and health record data</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="crumb">~/work/fit-mentor</span>
+      </div>
+      <div class="project-body">
+        <h3>Fit Mentor</h3>
+        <p class="desc">A full-stack fitness platform with workout tracking, BMI calculation, and personalized workout and diet plans, plus an admin dashboard for managing users and plans.</p>
+        <div class="tech-row">
+          <span>HTML/CSS/JS</span><span>Bootstrap</span><span>PHP</span><span>MySQL</span>
+        </div>
+        <div class="arch">
+          <div class="arch-rail"><div class="line"></div><div class="pulse"></div></div>
+          <div class="arch-layers">
+            <div class="arch-layer"><div class="name">Frontend</div><div class="detail">HTML, CSS, JavaScript, and Bootstrap for the user-facing app</div></div>
+            <div class="arch-layer"><div class="name">Backend</div><div class="detail">PHP handling authentication, plans, and progress logic</div></div>
+            <div class="arch-layer"><div class="name">Data</div><div class="detail">MySQL storing profiles, plans, and progress history</div></div>
+            <div class="arch-layer"><div class="name">Admin</div><div class="detail">Dashboard for managing users and workout/diet plans</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <span class="path mono">~/education</span>
+    <h2>Education &amp; training</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="when">2026 – 2028</div>
+        <div class="degree">M.Sc. Artificial Intelligence (pursuing)</div>
+        <div class="place">St. Joseph's College (Autonomous), Thiruchirapalli</div>
+      </div>
+      <div class="tl-item">
+        <div class="when">2023 – 2026</div>
+        <div class="degree">B.Sc. Computer Science</div>
+        <div class="place">Malankara Catholic College, Mariagiri, Kaliakkavilai</div>
+      </div>
+      <div class="tl-item">
+        <div class="when">Internship</div>
+        <div class="degree">MERN Stack</div>
+        <div class="place">Srishti Innovative Educational Services, Kazhakkoottam, Trivandrum</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <span class="path mono">~/contact</span>
+    <h2>Get in touch</h2>
+    <div class="contact-block">
+      <div class="contact-row"><span class="cmd">email</span><a href="mailto:julietsamsonraj2005@gmail.com">julietsamsonraj2005@gmail.com</a></div>
+      <div class="contact-row"><span class="cmd">phone</span>+91 8148132378</div>
+      <div class="contact-row"><span class="cmd">linkedin</span><a href="https://linkedin.com/in/juliet-samson-raj-12a8b2315" target="_blank" rel="noopener">juliet-samson-raj-12a8b2315</a></div>
+      <div class="contact-row"><span class="cmd">github</span><a href="https://github.com/julietsamsonraj2005" target="_blank" rel="noopener">julietsamsonraj2005</a></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap" style="border-top:none; padding:0;">
+    Juliet Samson Raj S — model.trained() · system.deployed()
+  </div>
+</footer>
+
+<script>
+  // scroll progress
+  var fill = document.getElementById('progressFill');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var height = h.scrollHeight - h.clientHeight;
+    fill.style.width = (height > 0 ? (scrolled / height) * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // active nav link
+  var navLinks = document.querySelectorAll('[data-nav]');
+  var sections = Array.from(navLinks).map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  });
+  function updateActiveNav(){
+    var pos = window.scrollY + 140;
+    var current = sections[0];
+    sections.forEach(function(sec){
+      if(sec && sec.offsetTop <= pos) current = sec;
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }
+  document.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  // data-flow pulse: start once each architecture diagram enters view
+  var archObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        archObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.arch').forEach(function(el){ archObserver.observe(el); });
+</script>
+
+</body>
+</html>
