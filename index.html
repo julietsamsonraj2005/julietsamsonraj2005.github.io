@@ -143,10 +143,17 @@ a{color:inherit}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
 @media(max-width:900px){
- .links,.nav>.btn{display:none}.burger{display:block}.nav{padding:7px 8px 7px 20px;gap:30px}
  .hero .wrap,.story{grid-template-columns:1fr}.hero{padding-top:120px}.story{gap:0}
  .vis{height:calc(42vh + 70px);top:0;z-index:3;order:-1;margin:0 -28px;padding-top:70px;background:rgba(8,13,30,.94);-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}.stack{transform:scale(.55)}.step{min-height:58vh}
  .card{grid-template-columns:1fr;top:calc(84px + var(--i)*60px)}.viz{display:none}
+}
+@media(max-width:900px){
+  .burger,.mp{display:none!important}
+  .nav{max-width:100%;padding:5px;gap:4px}
+  .links{min-width:0;overflow-x:auto;scrollbar-width:none}
+  .links::-webkit-scrollbar{display:none}
+  .links a{padding:8px 11px;font-size:.8rem;white-space:nowrap}
+  .nav>.btn.sm{display:inline-flex;flex:none;padding:8px 14px;font-size:.8rem}
 }
 @media(max-width:520px){.cta .btn{flex:1 1 100%}.av{width:54px;height:54px}.pf{padding:24px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.step{opacity:1}.stmt .w{opacity:1}.ecg{animation:none;stroke-dasharray:none}.card{position:relative;top:0}.btn::after{display:none}}
@@ -177,7 +184,7 @@ a{color:inherit}
     </div>
     <aside class="glass pf" aria-label="At a glance">
       <div class="head">
-        <div class="av"><!-- Replace the letters with <img src="photo.jpg" alt="Juliet Samson Raj S"> --><span>JS</span></div>
+        <div class="av"><!-- Replace the letters with <img src="photo.jpg" alt="Juliet Samson Raj S"> --><span>JSR</span></div>
         <div><h2>Juliet Samson Raj S</h2><small>Tamil Nadu, India</small></div>
       </div>
       <dl>
